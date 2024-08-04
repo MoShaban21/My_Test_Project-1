@@ -1,0 +1,445 @@
+/* Start Global Settings */
+:root {
+    --main-color:white;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;/* عشان اى اسكرول هيحصل هيبقا سموث بس خلى بالك من دعمها للمتصفحات */
+}
+body {
+  font-family: "Work Sans", sans-serif;
+
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+/* small */
+@media (min-width : 768px){
+    .container{
+        width:750px;
+    }
+}
+/* mediam */
+@media (min-width : 992px){
+    .container{
+        width : 970px;
+    }
+}
+/* mediam */
+@media (min-width:1200px){
+    .container{
+        width:1170px;
+    }
+}
+/*End Global Settings */
+
+/*Start components*/
+.special-heading { /*الكلام اللى ف اول السيكشن*//*الكلام ده هيطبق معايا ف كذا نقطه قدام */
+    color: #ebeced;
+    font-size: 100px;
+    text-align: center;  /*عشان الكلام يتوسط*/
+    font-weight: 800;
+    letter-spacing: -3px;/*عشان الكلام يلزق ف بعضه شويه*/
+    margin:0;
+}
+.special-heading + p { /*الراجراف اللى بعده ع طول */ 
+    margin: -30px 0 0;
+    font-size:20px;
+    text-align:center;
+    color:#797979;
+}
+@media (max-width:767px){/*عشان نظبط الريسبونسيف بتاع هيدينج السيرفيس*/
+    .special-heading {
+        font-size: 60px;
+    }
+    .special-heading + p {
+        margin-top: -20px;
+    }
+}
+/*End components*/
+
+/* Start Header */
+
+.header {
+    padding: 20px;
+}
+.header .container { /* عايز اخلى فى مسافه بين اللوجو والخدمات والايقون ف هخلى الكونتينر يبقا فليكس*/
+    display: flex;
+    justify-content: space-between; /* عشان احط بينهم مسافه ويبقا شكلهم حلو*/
+    align-items: center; /* عشان يبقوا متوسطين كلهم ع نفس المستوى*/
+}
+.header .Logo { /*عشان اظبط حجم اللوجو*/ 
+    width:200px;
+
+}
+
+.header .Links { /* محتاجه يبقا ريليتف عشان العناصر اللى جوا تبقا ابسليوت وكمان عشان الايقون لما اعمل هوفر عليها تتطلعلى الخدمات اللى جوا كلها */
+
+    position: relative;
+
+}
+.header .Links:hover .icon span:nth-child(2) { /**/
+    width:100%; /* لما اعمل هوفر عليه يخلى العرض كامل = 100 ف الميه*/
+}
+.header .Links .icon { /*دى الايقون الاصليه الاسبان اللى شايله العناصر جواها */ 
+    width:30px;
+    display: flex;
+    flex-wrap: wrap; /*عشان العناصر لما تملى الشاشه تنزل تحت عشان انا عايز 3 بار تحت بعض*/
+    justify-content: flex-end; /* عشان العناصر كلها تبتدى من الاخر ف تبقا من اليمين*/
+}
+.header .Links .icon span { /* الاسبان نفسها */
+    background-color:rgb(209, 70, 9);
+    margin-bottom: 5px; /* عشان ميلزقوش ف بعض*/
+    height: 2px; /*طول كل واحده فيهم */ 
+}
+.header .Links .icon span:first-child { /* عشان اوصل لاول واحده في ال 3*/ 
+    width:100%;
+}
+.header .Links .icon span:nth-child(2) { /* عشان اوصل لتانى واحده في ال 3*/ 
+    width: 60%;
+    transition: .3s; /* عشان تأثير الهوفر يبقا سلس اكتر*/ 
+}
+.header .Links .icon span:last-child { /* عشان اوصل لاخر واحده في ال 3*/ 
+    width:100%;
+}
+
+.header .Links ul {
+    list-style:none; /* عشان الغى شكل التنسيق*/ 
+    margin:0px; /*عشان الغى المارجين*/
+    padding:0px; /* عشان الغى البادينج*/ 
+    background-color:rgb(209, 70, 9); /*ادي ال يو ال لون خلفيه*/ 
+    position: absolute; /* عشان نوزعها ف الوضع المطلق*/
+    right:0; /*عشان تبدء مع اللينكس اللى حاططها ومتطلعش بره*/ 
+    min-width:200px; 
+    top: calc(100% + 15px);/* تبدء من بعد ال3 شرط ب 15 بيكسل*/
+    display: none; /*عشان نخفيها */
+    z-index: 1;/* ارتبها عشان تظهر ف الاول */
+}
+
+.header .Links ul::before { /*عشان اعمل السهم*/ 
+    content: "";
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgb(209, 70, 9) transparent;
+    position: absolute;
+    right:5px; /*بتتظبط مع الوقت*/
+    top:-20px;
+}
+
+.header .Links:hover ul {
+    display: block;
+}
+
+.header .Links ul li a { /*تنسيق اللينكات نفسها*/
+    display: block;
+    color:white;
+    text-decoration: none; /*عشان نشيل خط اللينك*/ 
+    padding: 15px;
+    transition:.3s; /*عشان يقبل يتحرك*/
+}
+.header .Links ul li a:hover {
+    padding-left: 25px; /*عشان يتحرك من الشمال سيكا شكل ناعم*/ 
+}
+.header .Links ul li:not(:last-child) a { /*ال ل اي ومش اخر واحده واختار ال ايه اللى جواهم */ 
+    border-bottom: 1px solid white; /*بوردر من تحت ف كله ماعدا اخر واحد*/
+}
+/* Start Landing Section */
+.landing {
+    background-image: url(../image/landing.jpeg);
+    background-size: cover;
+    height:calc(100vh - 68.7px); /*  شيلنا مساحه الهيدر ولو لسه فى اسكرول يبقا من ال اتش وان واعملها مرجين زيرو*/
+    position: relative;
+}
+.landing .intro-text {
+    position: absolute; /*عشان اوسطه ف نص الشاشه بالظبط ولما احط ريليتيف ف اللاندينج ف معناه انى بوسطه ف نص اللاندينج فقط*/
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;/*عشان الخى الكلام ف النص*/
+    width: 320px;/*عشان مخليش البراجراف يتتمدد ولو عايزه يتمدد اشيله */
+    max-width: 100%;/*عشان ميطلعش بره الكونتينر*/
+}
+.landing .intro-text h1 {
+    margin:0;
+    font-weight: bold;
+    font-size: 50px;
+    color:var(--main-color);/* بما ان اللون متكرر ف هثبته */
+}
+.landing .intro-text p {
+    font-size: 19px;
+    line-height: 1.8; 
+    color:var(--main-color);
+}
+
+/* End Landing Section */
+/*Start Features*/
+
+.Features {
+    padding-top: 60px;  /*هوامش من فوق ومن تحت */
+    padding-bottom: 60px;
+    background-color: rgb(246, 237, 237);
+}
+.Features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill , minmax(300px, 1fr));/*توزيعه الاعمده : انه هيملى الاعمده ب حسب المساحه اللى موجوده قدامه حاليا والبدايه هتبقا 300 ولو فى مساحه اكتر هياخد فراكشن واحد كامل يعنى لو عندى الف ف هيتوزعوا ع 3 انما لو 800 واحد منهم هينزل تحت واتنين هياخدوا نص المساحه لكل واحد فيهم*/
+    grid-gap:20px ; /*مسافه بينهم*/
+}
+.Features .feat {
+    padding: 20px;
+    text-align: center; /*نخلى الكلام ف النص*/
+}
+
+.Features .feat i {/*لون الايقون*/
+    color: rgb(209, 70, 9);
+}
+.Features .feat h3 {
+    font-weight: 800;/*اكسترا بولد */
+    margin: 30px 0;/*من فوق ومن تحت 30 ومن اليمين والشمال صفر*/
+}
+.Features .feat p {
+    line-height: 1.8;/*الكلام ميبقاش لازق ف بعضه ك سطور*/
+    color: #777;
+    font-size: 17px;/*حجم الخط*/
+}
+/*End Features*/
+/* Start Services */
+.services {
+    padding-top: 60px;
+    padding-bottom: 60px ;
+}
+.services .services-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+    margin-top: 100px;
+}
+.services .services-content .srv {
+    display: flex;
+    margin-bottom: 40px; /* عشان افصل بينهم من تحت*/
+}
+@media (max-width:767px){ /*عشان اظبط عرض السيرف يبقا عمودى مش صف */
+    .services .services-content .srv{
+        flex-direction: column;
+        text-align: center;
+    }
+}
+.services .services-content .srv i {/*اظبط الايقون */
+    color:rgb(209, 70, 9) ;
+    flex-basis: 60px;/*عشان لما ارروح ع الفون يتعامل مع الايقون نفسها ك طول وعرض*/
+}
+.services .services-content .srv .text {
+    flex:1; /*عشان ياخد باقى المساحه ويسبلى ال 60 بيكسل اللى انا عاملهم للايقون*/
+
+}
+.services .services-content .srv .text h3 {
+    margin: 0 0 20px; /*بلغى المارجين بتاع الاتش 3 نفسه عشان يساوى مستوى الايقون */
+}
+.services .services-content .srv .text p {
+    color: #777;
+    font-weight: 300;
+    line-height: 1.6;
+}
+.services .services-content .image {
+    text-align: center; /*اوسط العناصر اللى جواه */
+    position: relative; /*عشان لما استخدم البيفور والافتر*/
+}
+.services .services-content .image::before {
+    content: "";
+    right: 0; 
+    background-color:rgb(209, 70, 9) ;
+    width: 100px;
+    height: calc(100% + 100px);/*مساحه هزودها عشان الصوره تبقا كأنها جوا الشكل */
+    top: -50px;/*يفضل تبقا نص المساحه اللى زودناها فوق عشان تبقا ف النص بالظبط */
+    position: absolute;
+    right: 0px;
+    z-index: -1;/*عشان ارتب العنصر*/
+}
+.services .services-content .image img {
+    width: 260px;
+}
+@media (max-width: 1199px) { /*قبل منخش ف الشاشات الكبيره*/
+    .image-column {
+        display: none;/*الصرره تختفى */
+    } 
+
+}
+/* End Services */
+
+/* Start Portfolio */
+.portfolio {
+    padding-top: 60px;  /*هوامش من فوق ومن تحت */
+    padding-bottom: 60px;
+    background-color: #f6f6f6;
+}
+.portfolio .portfolio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+    margin-top: 80px;
+}
+.portfolio .portfolio-content .card {
+    background-color: white;
+
+}
+.portfolio .portfolio-content .card img {
+    max-width: 100%;
+}
+
+.portfolio .portfolio-content .card .info {
+    padding: 20px;
+}
+.portfolio .portfolio-content .card .info h3 {
+    margin: 0px;
+}
+.portfolio .portfolio-content .card .info p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+/* End Portfolio */
+
+/* Start About */
+.about {
+    padding-top: 60px;  /*هوامش من فوق ومن تحت */
+    padding-bottom: 120px;
+}
+.about .about-content {
+    margin-top:100px ; /*عشان نفصل بين الكونتينت وبين الهيدينج*//*ممكن نعمله قيمه ثابته عشان تنفع مع كله */
+    display:flex;
+    flex-wrap: wrap;/*عشان لو الكونتنت زادت مساحتها تنزل تحت  */
+    justify-content: space-between;/*اعمل مسافات بينهم اللى هى الصوره والكلام اللى جمبها */
+}
+@media (max-width:991px){ /*عشان اخلى الشكل عمودى*/
+    .about .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+.about .about-content .image {
+    position: relative;/*عشان العناصر اللى هنرسمها جواه معتمده ع الديف الاب ده*/
+    width: 225px;/*العرض والطول واخدهم من مساحه الصوره عشان محتاج ان الصوره تبقا ع قد الديف ومتطلعش بره خالص*/
+    height: 225px;
+
+}
+@media (max-width:991px) {
+    .about .about-content .image {/*عشان اوسط الصوره*/
+        margin: 0 auto 60px;
+    }
+}
+.about .about-content .image::before {
+    content: '';
+    position: absolute;
+    background-color:rgb(246, 237, 237);
+    width:70px;
+    height:calc(100% + 80px);/*ميبقاش ع قد الصوره بالظبط يبقا حبه فوق وحبه تحت */
+    top:-40px;/*يبدأ من نص المسافه اللى حاططها ف الطول ف الكالك*/
+    left:-20px; /*عشان يطلع بره شويه*/
+    z-index: -1;
+}
+.about .about-content .image::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height:150px; /*مش عايزينه ف التصميم يبقا قد الصوره*//*انا هنا بتكلم عن الشيب اللى هيتكون عليه البورده نفسه او هيتكون عليه حرف ال ل*/
+    border-left: 80px solid rgb(209, 70, 9);
+    border-bottom: 80px solid rgb(209, 70, 9);
+    z-index: -1;
+    right:-150px;/*عشان يطلع بره شويه*/
+    top:-40px;/*عشان يطلع فوق شويه*/
+}
+@media (max-width:991px) {/*عشان اشيل الرسمه اللى عاملها*/
+    .about .about-content .image::before,
+    .about .about-content .image::after {
+        display: none;
+    }
+}
+.about .about-content .image img { /*عشان نقلل حجم الصوره ومتعملناش مشاكل وتطلع بره*/
+    max-width:100%;
+}
+.about .about-content .text {
+    flex-basis: calc(100% - 500px);
+    
+}
+.about .about-content .text p:first-of-type {
+    font-weight:bold;
+    line-height:2;
+    margin-bottom: 50px;
+}
+.about .about-content .text hr {
+    width: 50%;/*نخلى مساحته النص */
+    display: inline-block;
+    border-color: rgb(209, 70, 9);
+}
+.about .about-content .text p:last-of-type {
+    line-height: 2;
+    color: #777;
+}
+/* End About */
+
+/* Start Contact */
+.contact {
+    padding-top: 60px;  /*هوامش من فوق ومن تحت */
+    padding-bottom: 60px;
+    background-color: #f6f6f6;
+}
+.contact .info {
+    padding-top: 60px;  /*هوامش من فوق ومن تحت */
+    padding-bottom: 60px;
+    text-align: center; /*عشان الكلام يتوسط*/
+}
+.contact .info .label {
+    font-size: 30px;
+    font-weight: 800; /*اكسترا بولد */
+    color: rgb(209, 70, 9);
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+}
+.contact .info .link {
+    display: block; /*عشان يحترم كل الاوامر اللى عاملها*/
+    font-size: 35px;
+    font-weight:800;
+    color: rgb(236, 147, 147);
+    text-decoration: none; /*عشان ميحطش خط تحت اللينك*/
+}
+.contact .info .social {
+    display: flex;
+    justify-content: center; /*عشان نوسط كله ف النص*/
+    margin-top: 20px;
+    font-size: 16px;
+}
+.contact .info .social i {
+    margin-left:10px;
+    color:rgb(209, 70, 9);
+}
+@media (max-width:767px) { /*بنظبط الخطوط عشان لما نغير الشاشه */
+    .contact .info .label,
+    .contact .info .link {
+        font-size: 25px;
+    }
+}
+/* End Contact */
+
+/* Start Footer */
+.footer {
+    background-color:rgb(236, 147, 147) ;
+    color: white;
+    padding: 30px 10px;
+    text-align: center;
+    font-size: 18px;
+}
+.footer span {
+    font-weight: bold;
+    color: rgb(209, 70, 9);
+}
+/* End Footer */
